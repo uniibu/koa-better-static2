@@ -4,6 +4,7 @@
 const request = require('supertest');
 const serve = require('..');
 const koa = require('koa');
+const mount = require('koa-mount');
 
 describe('serve(root)', function(){
     describe('when root = "."', function(){
@@ -210,7 +211,35 @@ describe('serve(root)', function(){
         .set('if-modified-since', 'Mon Jan 18 2011 23:04:34 GMT-0600')
         .expect(200, done)
     });
-  })
+  });
+
+  describe('Work with koa-mount', function() {
+
+    it('should mount fine', function(done) {
+
+      const app = koa();
+
+      app.use(
+        mount('/fixtures',
+        serve(require('path').join(__dirname, '/fixtures'))
+      ));
+
+
+      request(app.listen())
+        .get('/fixtures/hello.txt')
+        .expect(200)
+        .end(function(err, data) {
+         // console.log('Got response: ', err, data);
+          done(err);
+        })
+
+
+
+    });
+
+
+
+  });
 
 
 
