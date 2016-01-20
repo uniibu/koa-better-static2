@@ -5,8 +5,7 @@
 var debug = require('debug')('koa-better-static:send');
 var assert = require('assert');
 var extname = require('path').extname;
-var fs = require('mz/fs');
-var co = require('co');
+var fs = require('co-fs');
 
 /**
  * Expose `send()`.
@@ -28,9 +27,7 @@ module.exports = send;
 
 
 
-function send(ctx, path, opts) {
-  return co(function *(){
-
+function* send(ctx, path, opts) {
     assert(ctx, 'koa context required');
     assert(path, 'pathname required');
     assert(opts, 'opts required');
@@ -84,10 +81,9 @@ function send(ctx, path, opts) {
     ctx.set('Last-Modified', stats.mtime.toUTCString());
     ctx.set('Content-Length', stats.size);
     ctx.type = extname(path);
-    ctx.body = fs.createReadStream(path);
+    ctx.body = yield fs.createReadStream(path);
 
     return path;
-  });
 }
 
 

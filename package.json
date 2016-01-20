@@ -2,7 +2,7 @@
   "name": "koa-better-static",
   "description": "Static file serving middleware for koa",
   "repository": "ohomer/koa-better-static",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "keywords": [
     "koa",
     "middleware",
@@ -21,9 +21,8 @@
   },
   "license": "MIT",
   "dependencies": {
+    "co-fs": "^1.2.0",
     "debug": "*",
-    "koa-send": "~3.1.0",
-    "mz": "^2.1.0",
     "resolve-path": "^1.3.0"
   },
   "scripts": {

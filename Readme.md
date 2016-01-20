@@ -1,8 +1,9 @@
 # koa-better-static
 
-A drop in replacement for `koa-static`, designed to be higher performance.
+A higher performance, drop in replacement for `koa-static`, designed to be higher performance.
 
-* Doesn't use koa-send, and supports `If-Modified-Since` header for cache/performance
+* Doesn't use koa-send, but uses an optimized version
+* Supports `If-Modified-Since` header for cache/performance
 * Removal of `gzip` option (which checks for .gz files)
 * Removal of `defer` (if you want this behavior, put the middleware at the end)
 * No default `index` file
