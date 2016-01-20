@@ -1,6 +1,6 @@
 # koa-better-static
 
-A higher performance, drop in replacement for `koa-static`, designed to be higher performance.
+A higher performance, drop in replacement for `koa-static`, with a few minimal changes:
 
 * Doesn't use koa-send, but uses an optimized version
 * Supports `If-Modified-Since` header for cache/performance
