@@ -35,15 +35,13 @@ function serve(root, opts) {
   assert(root, 'root directory is required to serve files');
 
   var options = Object.assign({
-    index: 'index.html',
-    gzip: false,
+    index: false,
     maxage: 0,
     hidden: false,
     ifModifiedSinceSupport: true
   }, opts);
 
   const normalizedRoot = normalize(resolve(root));
-
 
   // options
   debug('static "%s" %j', root, opts);

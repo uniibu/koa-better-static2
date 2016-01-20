@@ -71,12 +71,12 @@ function send(ctx, path, opts) {
     // Check if we can return a cache hit
     if (ifModifiedSinceSupport) {
       var ims = ctx.get('If-Modified-Since');
-      if (ims) {
-        var ms = Date.parse(ims);
-        if (ms && Math.round(ms/1000) === Math.round(stats.mtime.getDate() / 1000)) {
-          ctx.status = 304; // not modified
-          return path;
-        }
+
+      var ms = Date.parse(ims);
+
+      if (ms && Math.round(ms/1000) === Math.round(stats.mtime.getTime()/1000)) {
+        ctx.status = 304; // not modified
+        return path;
       }
     }
 

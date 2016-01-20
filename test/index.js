@@ -76,11 +76,11 @@ describe('serve(root)', function(){
         })
       })
 
-      describe('when omitted', function(){
+      describe('when added', function(){
         it('should use index.html', function(done){
           const app = koa();
 
-          app.use(serve('test/fixtures'));
+          app.use(serve('test/fixtures', { index: 'index.html' }));
 
           request(app.listen())
           .get('/world/')
@@ -88,13 +88,13 @@ describe('serve(root)', function(){
           .expect('Content-Type', 'text/html; charset=utf-8')
           .expect('html index', done);
         })
-      })
+      });
 
-      describe('when disabled', function(){
+      describe('by default', function(){
         it('should not use index.html', function(done){
           const app = koa();
 
-          app.use(serve('test/fixtures', { index: false }));
+          app.use(serve('test/fixtures'));
 
           request(app.listen())
           .get('/world/')
@@ -171,8 +171,47 @@ describe('serve(root)', function(){
         .expect(200, done);
       })
     })
+  });
+
+
+  describe('Support if-modified-since', function(){
+    it('should 304', function(done){
+      const app = koa();
+
+      app.use(serve('test/fixtures'));
+
+      request(app.listen())
+        .get('/world/index.html')
+        .expect(200)
+        .end(function(err, response) {
+          if (err)
+            done(err);
+
+
+          var lastModified = response.headers['last-modified'];
+
+
+          request(app.callback())
+            .get('/world/index.html')
+            .set('if-modified-since', lastModified)
+            .expect(304, done);
+
+        });
+    });
+
+
+    it('should 200', function(done){
+      const app = koa();
+
+      app.use(serve('test/fixtures'));
+
+      request(app.listen())
+        .get('/world/index.html')
+        .set('if-modified-since', 'Mon Jan 18 2011 23:04:34 GMT-0600')
+        .expect(200, done)
+    });
   })
 
 
 
-})
+});

@@ -2,7 +2,7 @@
   "name": "koa-better-static",
   "description": "Static file serving middleware for koa",
   "repository": "ohomer/koa-better-static",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "keywords": [
     "koa",
     "middleware",
