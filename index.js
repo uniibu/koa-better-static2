@@ -48,8 +48,6 @@ function serve(root, opts) {
 
   return function *serve(next){
 
-    console.log('Got file: ', this.path);
-
     if (this.method == 'HEAD' || this.method == 'GET') {
 
       var path = this.path.substr(parse(this.path).root.length);
