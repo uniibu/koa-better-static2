@@ -5,7 +5,7 @@
 var debug = require('debug')('koa-better-static:send');
 var assert = require('assert');
 var extname = require('path').extname;
-var fs = require('co-fs');
+var fs = require('fs');
 
 /**
  * Expose `send()`.
@@ -26,6 +26,16 @@ module.exports = send;
  */
 
 
+function stat(path) {
+  return new Promise(function(resolve, reject) {
+    fs.stat(path, function(err, data) {
+      if (err) return reject(err);
+      resolve(data);
+    })
+  });
+}
+
+
 
 function* send(ctx, path, opts) {
     assert(ctx, 'koa context required');
@@ -42,7 +52,7 @@ function* send(ctx, path, opts) {
     // stat
     var stats;
     try {
-      stats = yield fs.stat(path);
+      stats = yield stat(path);
     } catch (err) {
       var notfound = ['ENOENT', 'ENAMETOOLONG', 'ENOTDIR'];
       if (~notfound.indexOf(err.code)) return;
@@ -57,7 +67,7 @@ function* send(ctx, path, opts) {
     if (stats.isDirectory()) {
       if (format && index) {
         path += '/' + index;
-        stats = yield fs.stat(path);
+        stats = yield stat(path);
       } else {
         return;
       }
@@ -81,7 +91,7 @@ function* send(ctx, path, opts) {
     ctx.set('Last-Modified', stats.mtime.toUTCString());
     ctx.set('Content-Length', stats.size);
     ctx.type = extname(path);
-    ctx.body = yield fs.createReadStream(path);
+    ctx.body = fs.createReadStream(path);
 
     return path;
 }

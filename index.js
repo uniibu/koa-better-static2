@@ -43,8 +43,6 @@ function serve(root, opts) {
 
   const normalizedRoot = normalize(resolve(root));
 
-  console.log('Normalized root: ', normalizedRoot);
-
   // options
   debug('static "%s" %j', root, opts);
 
