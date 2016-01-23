@@ -1,6 +1,7 @@
 
 'use strict';
 
+const assert = require('assert');
 const request = require('supertest');
 const serve = require('..');
 const koa = require('koa');
@@ -237,10 +238,27 @@ describe('serve(root)', function(){
 
     });
 
+  });
 
+});
+
+// This is more of a test of js, than of the logic. But something we rely on
+describe('Dates should truncate not, round', function() {
+
+  it('should mount fine', function() {
+
+    var str = new Date().toUTCString();
+
+    let ms = Date.parse(str);
+    ms += 999; // add 999 ms
+
+
+    let nd = new Date(ms);
+
+    assert(nd.toUTCString() === str);
 
   });
 
 
-
 });
+

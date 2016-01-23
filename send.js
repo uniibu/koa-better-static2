@@ -81,7 +81,7 @@ function* send(ctx, path, opts) {
 
       var ms = Date.parse(ims);
 
-      if (ms && Math.round(ms/1000) === Math.round(stats.mtime.getTime()/1000)) {
+      if (ms && Math.floor(ms/1000) === Math.floor(stats.mtime.getTime()/1000)) {
         ctx.status = 304; // not modified
         return path;
       }
