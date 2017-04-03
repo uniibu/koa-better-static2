@@ -65,14 +65,12 @@ async function send(ctx, path, opts) {
 
     // Check if we can return a cache hit
     if (ifModifiedSinceSupport) {
-      const ims = ctx.get('If-Modified-Since');
-
-      const ms = Date.parse(ims);
-
-      if (ms && Math.floor(ms/1000) === Math.floor(stats.mtime.getTime()/1000)) {
-        ctx.status = 304; // not modified
-        return path;
-      }
+        const ims = Math.floor(Date.parse(ctx.get('If-Modified-Since'))/1000);
+        const mtime = Math.floor(stats.mtime.getTime()/1000);
+        if(ims && ims === mtime){
+            ctx.status = 304;
+            return path;
+        }
     }
 
     // stream
