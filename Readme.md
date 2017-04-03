@@ -1,4 +1,8 @@
-# koa-better-static
+# koa-better-static2
+
+**NOTE: This is for  use with Koa 2.x.x and Nodejs 7.x.x. For Koa 1.x.x use https://github.com/ohomer/koa-better-static
+
+This is a updated fork of koa-better-static by ohomer(https://github.com/ohomer) that uses latest Nodejs and Koajs version. 
 
 A higher performance, drop in replacement for `koa-static`, with a few minimal changes:
 
@@ -7,21 +11,22 @@ A higher performance, drop in replacement for `koa-static`, with a few minimal c
 * Removal of `gzip` option (which checks for .gz files)
 * Removal of `defer` (if you want this behavior, put the middleware at the end)
 * No default `index` file
-* Requires node 4 or greater.
+* Requires node 7 or greater.
 
 
 ## Installation
 
 ```bash
-$ npm install koa-better-static
+$ npm install koa-better-static2
 ```
 
 ## API
 
 ```js
-var koa = require('koa');
-var app = koa();
-app.use(require('koa-static')(root, opts));
+const Koa = require('koa');
+const serve = require('koa-better-static2');
+const app = new Koa();
+app.use(serve(root, opts));
 ```
 
 * `opts` options object.
@@ -37,9 +42,9 @@ app.use(require('koa-static')(root, opts));
 ## Example
 
 ```js
-var serve = require('koa-better-static');
-var koa = require('koa');
-var app = koa();
+const serve = require('koa-better-static2');
+const Koa = require('koa');
+const app = new Koa();
 
 // $ GET /package.json
 app.use(serve('.'));
