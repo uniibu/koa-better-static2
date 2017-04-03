@@ -1,4 +1,12 @@
 # koa-better-static2
+[![Node version](https://img.shields.io/node/v/koa-better-static2.svg?style=flat)](http://nodejs.org/download/)
+[![Koajs deps](https://img.shields.io/badge/Koajs-2.2.0-brightgreen.svg)](https://github.com/koajs/koa)
+[![Build Status](https://travis-ci.org/uniibu/koa-better-static2.svg?branch=master)](https://travis-ci.org/uniibu/koa-better-static2)
+[![David deps](https://david-dm.org/uniibu/koa-better-static2.svg)](https://david-dm.org/uniibu/koa-better-static2)
+[![Coverage Status](https://coveralls.io/repos/github/uniibu/koa-better-static2/badge.svg?branch=master)](https://coveralls.io/github/uniibu/koa-better-static2?branch=master)
+
+[![https://nodei.co/npm/koa-better-static2.png?downloads=true&downloadRank=true&stars=true](https://nodei.co/npm/koa-better-static2.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/koa-better-static2)
+
 
 **NOTE: This is for  use with Koa 2.x.x and Nodejs 7.x.x. For Koa 1.x.x use https://github.com/ohomer/koa-better-static
 
