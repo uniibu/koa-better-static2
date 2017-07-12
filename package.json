@@ -2,7 +2,7 @@
   "name": "koa-better-static2",
   "description": "Static file serving middleware for koa@2",
   "repository": "uniibu/koa-better-static2",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "keywords": [
     "koa",
     "middleware",
@@ -16,7 +16,7 @@
   ],
   "devDependencies": {
     "istanbul": "^1.1.0-alpha.1",
-    "koa": "^2.2.0",
+    "koa": "^2.3.0",
     "koa-mount": "^3.0.0",
     "mocha": "3.2.0",
     "supertest": "^3.0.0"
@@ -24,7 +24,6 @@
   "license": "MIT",
   "dependencies": {
     "debug": "*",
-    "mz": "^2.6.0",
     "resolve-path": "^1.3.3"
   },
   "scripts": {
@@ -33,6 +32,6 @@
     "test-travis": "node ./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha --report lcovonly"
   },
   "engines": {
-    "node": "7.8.0"
+    "node": ">= 8.0.0"
   }
 }
