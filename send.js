@@ -32,8 +32,9 @@ async function send(ctx, path, opts) {
     const maxage = opts.maxage;
     const format = opts.format;
     const ifModifiedSinceSupport = opts.ifModifiedSinceSupport;
+    let stats;
     try {
-        let stats = await fsStat(path);
+        stats = await fsStat(path);
         // Format the path to serve static file servers
         // and not require a trailing slash for directories,
         // so that you can do both `/directory` and `/directory/`
