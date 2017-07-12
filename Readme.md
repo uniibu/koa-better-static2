@@ -1,5 +1,5 @@
 # koa-better-static2
-[![Node version](https://img.shields.io/node/v/koa-better-static2.svg?style=flat)](http://nodejs.org/download/)
+[![Node version](https://img.shields.io/badge/Node-8.0.0-blue.svg)](http://nodejs.org/download/)
 [![Koajs deps](https://img.shields.io/badge/Koajs-2.3.0-brightgreen.svg)](https://github.com/koajs/koa)
 [![Build Status](https://travis-ci.org/uniibu/koa-better-static2.svg?branch=master)](https://travis-ci.org/uniibu/koa-better-static2)
 [![David deps](https://david-dm.org/uniibu/koa-better-static2.svg)](https://david-dm.org/uniibu/koa-better-static2)
