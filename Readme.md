@@ -5,7 +5,7 @@
 [![David deps](https://david-dm.org/uniibu/koa-better-static2.svg)](https://david-dm.org/uniibu/koa-better-static2)
 [![Coverage Status](https://coveralls.io/repos/github/uniibu/koa-better-static2/badge.svg?branch=master)](https://coveralls.io/github/uniibu/koa-better-static2?branch=master)
 
-[![https://nodei.co/npm/koa-better-static2.png?downloads=true&downloadRank=true&stars=true](https://nodei.co/npm/koa-better-static2.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/koa-better-static2)
+[![https://nodei.co/npm/koa-better-static2.png?downloads=true&downloadRank=true&stars=true](https://nodei.co/npm/koa-better-static2.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/koa-better-static2) [![Greenkeeper badge](https://badges.greenkeeper.io/uniibu/koa-better-static2.svg)](https://greenkeeper.io/)
 
 
 **NOTE: This is for use with Koa 2.x.x and Nodejs 8.x.x. For Koa 1.x.x use https://github.com/ohomer/koa-better-static
