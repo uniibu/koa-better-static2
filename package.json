@@ -16,7 +16,7 @@
   ],
   "devDependencies": {
     "istanbul": "1.1.0-alpha.1",
-    "koa": "2.5.1",
+    "koa": "2.7.0",
     "koa-mount": "3.0.0",
     "mocha": "3.2.0",
     "supertest": "3.0.0"
