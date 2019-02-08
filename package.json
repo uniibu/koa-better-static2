@@ -15,16 +15,16 @@
     "send.js"
   ],
   "devDependencies": {
-    "istanbul": "^1.1.0-alpha.1",
-    "koa": "^2.3.0",
-    "koa-mount": "^3.0.0",
-    "mocha": "^5.2.0",
-    "supertest": "^3.0.0"
+    "istanbul": "1.1.0-alpha.1",
+    "koa": "2.5.1",
+    "koa-mount": "3.0.0",
+    "mocha": "3.2.0",
+    "supertest": "3.0.0"
   },
   "license": "MIT",
   "dependencies": {
-    "debug": "^3.1.0",
-    "resolve-path": "^1.4.0"
+    "debug": "3.1.0",
+    "resolve-path": "1.4.0"
   },
   "scripts": {
     "test": "mocha --reporter spec",
