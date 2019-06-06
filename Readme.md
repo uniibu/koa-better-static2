@@ -1,6 +1,6 @@
 # koa-better-static2
-[![Node version](https://img.shields.io/badge/Node-8.0.0-blue.svg)](http://nodejs.org/download/)
-[![Koajs deps](https://img.shields.io/badge/Koajs-2.3.0-brightgreen.svg)](https://github.com/koajs/koa)
+[![Node version](https://img.shields.io/badge/Node-10.0.0-blue.svg)](http://nodejs.org/download/)
+[![Koajs deps](https://img.shields.io/badge/Koajs-2.7.0-brightgreen.svg)](https://github.com/koajs/koa)
 [![Build Status](https://travis-ci.org/uniibu/koa-better-static2.svg?branch=master)](https://travis-ci.org/uniibu/koa-better-static2)
 [![David deps](https://david-dm.org/uniibu/koa-better-static2.svg)](https://david-dm.org/uniibu/koa-better-static2)
 [![Coverage Status](https://coveralls.io/repos/github/uniibu/koa-better-static2/badge.svg?branch=master)](https://coveralls.io/github/uniibu/koa-better-static2?branch=master)
@@ -8,9 +8,9 @@
 [![https://nodei.co/npm/koa-better-static2.png?downloads=true&downloadRank=true&stars=true](https://nodei.co/npm/koa-better-static2.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/koa-better-static2)
 
 
-**NOTE: This is for use with Koa 2.x.x and Nodejs 8.x.x. For Koa 1.x.x use https://github.com/ohomer/koa-better-static
+**NOTE: This is for use with Koa 2.x.x and Nodejs 10.x.x. For Koa 1.x.x use https://github.com/ohomer/koa-better-static
 
-This is a updated fork of koa-better-static by ohomer(https://github.com/ohomer) that uses latest Nodejs and Koajs version. 
+This is a updated fork of koa-better-static by ohomer(https://github.com/ohomer) that uses latest Nodejs and Koajs version.
 
 A higher performance, drop in replacement for `koa-static`, with a few minimal changes:
 
