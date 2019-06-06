@@ -3,3 +3,4 @@ coverage
 .idea/
 vendor/
 composer.lock
+.nyc_output

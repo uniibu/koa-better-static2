@@ -7,31 +7,31 @@ const serve = require('../');
 const Koa = require('koa');
 const mount = require('koa-mount');
 
-describe('serve(root)', function(){
-  describe('when root = "."', function(){
-    it('should serve from cwd', function(done){
+describe('serve(root)', function() {
+  describe('when root = "."', function() {
+    it('should serve from cwd', function(done) {
       const app = new Koa();
       app.use(serve('.'));
-      request(app.listen())
-          .get('/package.json')
-          .expect(200, done);
+      request(app.callback())
+        .get('/package.json')
+        .expect(200, done);
     })
   })
 
-  describe('when path is not a file', function(){
-    it('should 404', function(done){
+  describe('when path is not a file', function() {
+    it('should 404', function(done) {
       const app = new Koa();
 
       app.use(serve('test/fixtures'));
 
-      request(app.listen())
-          .get('/something')
-          .expect(404, done);
+      request(app.callback())
+        .get('/something')
+        .expect(404, done);
     })
   })
 
-  describe('when upstream middleware responds', function(){
-    it('should respond', function(done){
+  describe('when upstream middleware responds', function() {
+    it('should respond', function(done) {
       const app = new Koa();
 
       app.use(serve('test/fixtures'));
@@ -40,85 +40,85 @@ describe('serve(root)', function(){
         return next().then(() => {
           ctx.body = 'hey';
         });
-       });
+      });
 
-      request(app.listen())
-          .get('/hello.txt')
-          .expect(200)
-          .expect('world', done);
+      request(app.callback())
+        .get('/hello.txt')
+        .expect(200)
+        .expect('world', done);
     })
   })
 
-  describe('the path is valid', function(){
-    it('should serve the file', function(done){
+  describe('the path is valid', function() {
+    it('should serve the file', function(done) {
       const app = new Koa();
 
       app.use(serve('test/fixtures'));
 
-      request(app.listen())
-          .get('/hello.txt')
-          .expect(200)
-          .expect('world', done);
+      request(app.callback())
+        .get('/hello.txt')
+        .expect(200)
+        .expect('world', done);
     })
   })
 
-  describe('.index', function(){
-    describe('when present', function(){
-      it('should alter the index file supported', function(done){
+  describe('.index', function() {
+    describe('when present', function() {
+      it('should alter the index file supported', function(done) {
         const app = new Koa();
 
         app.use(serve('test/fixtures', { index: 'index.txt' }));
 
-        request(app.listen())
-            .get('/')
-            .expect(200)
-            .expect('Content-Type', 'text/plain; charset=utf-8')
-            .expect('text index', done);
+        request(app.callback())
+          .get('/')
+          .expect(200)
+          .expect('Content-Type', 'text/plain; charset=utf-8')
+          .expect('text index', done);
       })
     })
 
-    describe('when added', function(){
-      it('should use index.html', function(done){
+    describe('when added', function() {
+      it('should use index.html', function(done) {
         const app = new Koa();
 
         app.use(serve('test/fixtures', { index: 'index.html' }));
 
-        request(app.listen())
-            .get('/world/')
-            .expect(200)
-            .expect('Content-Type', 'text/html; charset=utf-8')
-            .expect('html index', done);
+        request(app.callback())
+          .get('/world/')
+          .expect(200)
+          .expect('Content-Type', 'text/html; charset=utf-8')
+          .expect('html index', done);
       })
     });
 
-    describe('by default', function(){
-      it('should not use index.html', function(done){
+    describe('by default', function() {
+      it('should not use index.html', function(done) {
         const app = new Koa();
 
         app.use(serve('test/fixtures'));
 
-        request(app.listen())
-            .get('/world/')
-            .expect(404, done);
+        request(app.callback())
+          .get('/world/')
+          .expect(404, done);
       })
     })
   })
 
-  describe('when method is not `GET` or `HEAD`', function(){
-    it('should 404', function(done){
+  describe('when method is not `GET` or `HEAD`', function() {
+    it('should 404', function(done) {
       const app = new Koa();
 
       app.use(serve('test/fixtures'));
 
-      request(app.listen())
-          .post('/hello.txt')
-          .expect(404, done);
+      request(app.callback())
+        .post('/hello.txt')
+        .expect(404, done);
     })
   })
 
-  describe('option - format', function(){
-    describe('when format: false', function(){
-      it('should 404', function(done){
+  describe('option - format', function() {
+    describe('when format: false', function() {
+      it('should 404', function(done) {
         const app = new Koa();
 
         app.use(serve('test/fixtures', {
@@ -126,12 +126,12 @@ describe('serve(root)', function(){
           format: false
         }));
 
-        request(app.listen())
-            .get('/world')
-            .expect(404, done);
+        request(app.callback())
+          .get('/world')
+          .expect(404, done);
       })
 
-      it('should 200', function(done){
+      it('should 200', function(done) {
         const app = new Koa();
 
         app.use(serve('test/fixtures', {
@@ -139,14 +139,14 @@ describe('serve(root)', function(){
           format: false
         }));
 
-        request(app.listen())
-            .get('/world/')
-            .expect(200, done);
+        request(app.callback())
+          .get('/world/')
+          .expect(200, done);
       })
     })
 
-    describe('when format: true', function(){
-      it('should 200', function(done){
+    describe('when format: true', function() {
+      it('should 200', function(done) {
         const app = new Koa();
 
         app.use(serve('test/fixtures', {
@@ -154,12 +154,12 @@ describe('serve(root)', function(){
           format: true
         }));
 
-        request(app.listen())
-            .get('/world')
-            .expect(200, done);
+        request(app.callback())
+          .get('/world')
+          .expect(200, done);
       })
 
-      it('should 200', function(done){
+      it('should 200', function(done) {
         const app = new Koa();
 
         app.use(serve('test/fixtures', {
@@ -167,49 +167,49 @@ describe('serve(root)', function(){
           format: true
         }));
 
-        request(app.listen())
-            .get('/world/')
-            .expect(200, done);
+        request(app.callback())
+          .get('/world/')
+          .expect(200, done);
       })
     })
   });
 
 
-  describe('Support if-modified-since', function(){
-    it('should 304', function(done){
+  describe('Support if-modified-since', function() {
+    it('should 304', function(done) {
       const app = new Koa();
 
       app.use(serve('test/fixtures'));
 
-      request(app.listen())
-          .get('/world/index.html')
-          .expect(200)
-          .end(function(err, response) {
-            if (err)
-              done(err);
+      request(app.callback())
+        .get('/world/index.html')
+        .expect(200)
+        .end(function(err, response) {
+          if (err)
+            done(err);
 
 
-            var lastModified = response.headers['last-modified'];
+          var lastModified = response.headers['last-modified'];
 
 
-            request(app.callback())
-                .get('/world/index.html')
-                .set('If-Modified-Since', lastModified)
-                .expect(304, done);
+          request(app.callback())
+            .get('/world/index.html')
+            .set('If-Modified-Since', lastModified)
+            .expect(304, done);
 
-          });
+        });
     });
 
 
-    it('should 200', function(done){
+    it('should 200', function(done) {
       const app = new Koa();
 
       app.use(serve('test/fixtures'));
 
-      request(app.listen())
-          .get('/world/index.html')
-          .set('if-modified-since', 'Mon Jan 18 2011 23:04:34 GMT-0600')
-          .expect(200, done)
+      request(app.callback())
+        .get('/world/index.html')
+        .set('if-modified-since', 'Mon Jan 18 2011 23:04:34 GMT-0600')
+        .expect(200, done)
     });
   });
 
@@ -220,18 +220,18 @@ describe('serve(root)', function(){
       const app = new Koa();
 
       app.use(
-          mount('/fixtures',
-              serve(require('path').join(__dirname, '/fixtures'))
-          ));
+        mount('/fixtures',
+          serve(require('path').join(__dirname, '/fixtures'))
+        ));
 
 
-      request(app.listen())
-          .get('/fixtures/hello.txt')
-          .expect(200)
-          .end(function(err, data) {
-            // console.log('Got response: ', err, data);
-            done(err);
-          })
+      request(app.callback())
+        .get('/fixtures/hello.txt')
+        .expect(200)
+        .end(function(err, data) {
+          // console.log('Got response: ', err, data);
+          done(err);
+        })
 
 
 
