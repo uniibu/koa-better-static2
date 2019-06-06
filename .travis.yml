@@ -8,4 +8,3 @@ cache:
     - node_modules
 
 script: "npm run-script test-travis"
-after_script: "npm install coveralls@2 && cat ./coverage/lcov.info | coveralls"
