@@ -2,7 +2,7 @@
   "name": "koa-better-static2",
   "description": "Static file serving middleware for koa@2",
   "repository": "uniibu/koa-better-static2",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "keywords": [
     "koa",
     "middleware",
