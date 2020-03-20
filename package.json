@@ -15,7 +15,7 @@
     "send.js"
   ],
   "devDependencies": {
-    "coveralls": "3.0.4",
+    "coveralls": "3.0.11",
     "koa": "2.7.0",
     "koa-mount": "4.0.0",
     "mocha": "6.1.4",
